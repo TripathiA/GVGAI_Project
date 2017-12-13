@@ -1,0 +1,42 @@
+Listening for transport dt_socket at address: 8888
+[GAME] Game idx:0 game name aliens
+[PHASE] Starting First Phase of Training in 3 levels.
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:0, Player0-Score:21.0, timesteps:300
+[TRAINING] Result (1->win; 0->lose): level:1, Player0:0, Player0-Score:58.0, timesteps:707
+[TRAINING] Result (1->win; 0->lose): level:2, Player0:0, Player0-Score:38.0, timesteps:286
+[PHASE] Starting Second Phase of Training in 3 levels.
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:1, Player0-Score:61.0, timesteps:722
+[TRAINING] Result (1->win; 0->lose): level:1, Player0:0, Player0-Score:62.0, timesteps:849
+[TRAINING] Result (1->win; 0->lose): level:2, Player0:1, Player0-Score:65.0, timesteps:666
+[TRAINING] Result (1->win; 0->lose): level:1, Player0:0, Player0-Score:22.0, timesteps:241
+[TRAINING] Result (1->win; 0->lose): level:1, Player0:1, Player0-Score:66.0, timesteps:654
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:0, Player0-Score:31.0, timesteps:358
+[TRAINING] Result (1->win; 0->lose): level:2, Player0:0, Player0-Score:47.0, timesteps:571
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:0, Player0-Score:9.0, timesteps:94
+[TRAINING] Result (1->win; 0->lose): level:2, Player0:0, Player0-Score:38.0, timesteps:357
+[TRAINING] Result (1->win; 0->lose): level:1, Player0:0, Player0-Score:57.0, timesteps:730
+[TRAINING] Result (1->win; 0->lose): level:2, Player0:1, Player0-Score:60.0, timesteps:550
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:0, Player0-Score:63.0, timesteps:881
+[TRAINING] Result (1->win; 0->lose): level:1, Player0:1, Player0-Score:62.0, timesteps:730
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:0, Player0-Score:43.0, timesteps:466
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:0, Player0-Score:54.0, timesteps:892
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:0, Player0-Score:16.0, timesteps:162
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:1, Player0-Score:59.0, timesteps:615
+[TRAINING] Result (1->win; 0->lose): level:2, Player0:0, Player0-Score:45.0, timesteps:469
+[TRAINING] Result (1->win; 0->lose): level:1, Player0:0, Player0-Score:52.0, timesteps:725
+[TRAINING] Result (1->win; 0->lose): level:2, Player0:0, Player0-Score:45.0, timesteps:434
+[TRAINING] Result (1->win; 0->lose): level:1, Player0:0, Player0-Score:31.0, timesteps:265
+[TRAINING] Result (1->win; 0->lose): level:2, Player0:0, Player0-Score:56.0, timesteps:1007
+[TRAINING] Result (1->win; 0->lose): level:1, Player0:0, Player0-Score:18.0, timesteps:219
+[TRAINING] Result (1->win; 0->lose): level:2, Player0:0, Player0-Score:33.0, timesteps:378
+[TRAINING] Result (1->win; 0->lose): level:1, Player0:1, Player0-Score:57.0, timesteps:544
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:0, Player0-Score:14.0, timesteps:240
+[TRAINING] Result (1->win; 0->lose): level:2, Player0:0, Player0-Score:42.0, timesteps:490
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:0, Player0-Score:13.0, timesteps:143
+[TRAINING] Result (1->win; 0->lose): level:2, Player0:0, Player0-Score:28.0, timesteps:330
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:0, Player0-Score:60.0, timesteps:988
+[TRAINING] Result (1->win; 0->lose): level:2, Player0:1, Player0-Score:61.0, timesteps:816
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:1, Player0-Score:66.0, timesteps:706
+[TRAINING] Result (1->win; 0->lose): level:1, Player0:1, Player0-Score:67.0, timesteps:671
+[TRAINING] Result (1->win; 0->lose): level:2, Player0:0, Player0-Score:50.0, timesteps:722
+[TRAINING] Result (1->win; 0->lose): level:0, Player0:0, Player0-Score:56.0, timesteps:937
