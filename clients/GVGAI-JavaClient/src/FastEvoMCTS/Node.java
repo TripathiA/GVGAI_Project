@@ -1,7 +1,7 @@
 package tracks.singlePlayer.advanced.FastEvoMCTS;
 
-import ontology.Types;
-import tools.Vector2d;
+import server-out.ontology.Types;
+import server-out.tools.Vector2d;
 
 /**
  * Created by diego on 05/09/14.

@@ -1,7 +1,5 @@
 package tracks.singlePlayer.advanced.FastEvoMCTS;
 
-//import Astar;
-//import Node;
 import core.game.Event;
 import core.game.Observation;
 import core.game.StateObservation;
@@ -17,11 +15,7 @@ import java.util.Random;
 import java.util.TreeSet;
 
 /**
- * Created with IntelliJ IDEA.
- * User: ssamot
- * Date: 14/11/13
- * Time: 21:45
- * This is a Java port from Tom Schaul's VGDL - https://github.com/schaul/py-vgdl
+ * This code is taken from https://github.com/diegopliebana/EvoMCTS/tree/master/src/FastEvoMCTS and modified.
  */
 public class Agent extends AbstractPlayer {
 
@@ -46,6 +40,16 @@ public class Agent extends AbstractPlayer {
 
     private ArrayList<Integer> validAstarStatic;
 
+
+    ///// addition //////
+    public int prev_action;
+    public static int[] favourable_actions;
+    public double prev_score;
+    public boolean first_action;
+    public int events_seen;
+    /////////////////////
+
+
     /**
      * Public constructor with state observation and time due.
      * @param so state observation of the current game.
@@ -57,6 +61,18 @@ public class Agent extends AbstractPlayer {
         ArrayList<Types.ACTIONS> act = so.getAvailableActions();
         actions = new Types.ACTIONS[act.size()];
         NUM_ACTIONS = actions.length;
+
+	/////// addition ////////
+	favourable_actions = new int[act.size()];
+	for(int i = 0; i< favourable_actions.length; i++)
+	{
+		favourable_actions[i] = 0;
+	}
+	prev_score = -1;
+	prev_action = -1;
+	first_action = true;
+	events_seen = 0;
+	////////////////////////
 
         for(int i = 0; i < actions.length; ++i)
         {
@@ -93,7 +109,7 @@ public class Agent extends AbstractPlayer {
         fe.setMemory(memory);
 
         long seed = new Random().nextInt();
-        System.out.println("MCTS Seed: " + seed);
+        //System.out.println("MCTS Seed: " + seed);
         Random rnd = new Random(seed);
 
         roller = new VariableFeatureWeightedRoller(so,fe, rnd);
@@ -105,10 +121,10 @@ public class Agent extends AbstractPlayer {
 
         memory.report();
 
-        if(Config.USE_ASTAR)
-            System.out.println("This game WILL USE A*");
-        else
-            System.out.println("No A*");
+        //if(Config.USE_ASTAR)
+        //    System.out.println("This game WILL USE A*");
+        //else
+        //    System.out.println("No A*");
 
         int a = 0;
     }
@@ -144,7 +160,7 @@ public class Agent extends AbstractPlayer {
         if(movingPositions != null) initValues(movingPositions, stateObs);
         if(npcPositions != null) initValues(npcPositions, stateObs);
 
-        System.out.println("Before wander: "  + elapsedTimer.elapsedMillis());
+        //System.out.println("Before wander: "  + elapsedTimer.elapsedMillis());
         while(elapsedTimer.elapsedMillis() < 900)
         {
             //System.out.println("----");
@@ -396,11 +412,27 @@ public class Agent extends AbstractPlayer {
      */
     public Types.ACTIONS act(StateObservation stateObs, ElapsedCpuTimer elapsedTimer)
     {
+	int events_len = stateObs.getEventsHistory().size();
+	if(!first_action)
+	{
+		favourable_actions[prev_action] += stateObs.getGameScore()-prev_score + (events_len - events_seen);
+	}	
+	//System.out.println("New actions value");
+	//for(int i = 0; i< favourable_actions.length; i++)
+        //{
+        //        System.out.print(favourable_actions[i]+" ");
+        //}
+	//System.out.println();
         //Init the player with the current state observation.
-        mctsPlayer.init(stateObs, fe);
+        mctsPlayer.init(stateObs, fe, favourable_actions);
 
         //Determine the action using MCTS...
         int action = mctsPlayer.run(elapsedTimer);
+
+	prev_action = action;
+	prev_score = stateObs.getGameScore();
+	first_action = false;
+	events_seen = events_len;
 
         //... and return it.
         return actions[action];

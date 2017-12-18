@@ -4,7 +4,7 @@ import ontology.Types;
 import tools.Vector2d;
 
 /**
- * Created by diego on 05/09/14.
+ * This code is taken from https://github.com/diegopliebana/EvoMCTS/tree/master/src/FastEvoMCTS and modified. 
  */
 public class Node implements Comparable<Node> {
 

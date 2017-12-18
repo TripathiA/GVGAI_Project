@@ -4,16 +4,13 @@ import core.game.Observation;
 import core.game.StateObservation;
 import ontology.Types;
 import tools.Vector2d;
-//import Astar;
-//import Navigable;
-//import Node;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
 /**
- * Created by diego on 10/03/14.
+ * This code is taken from https://github.com/diegopliebana/EvoMCTS/tree/master/src/FastEvoMCTS and modified. 
  */
 public class FeatureExtraction implements Navigable
 {

@@ -60,6 +60,10 @@ public class SingleTreeNodeOL extends TreeNode {
             m_depth = 0;
     }
 
+    public void setfavourable_acts(int[] fav_acts)
+    {
+        return;
+    }
 
     @Override
     public void mctsSearch(ElapsedCpuTimer elapsedTimer, TunableRoller roller, FitVectorSource source) {
@@ -446,7 +450,7 @@ public class SingleTreeNodeOL extends TreeNode {
 
         if (selected == -1)
         {
-            System.out.println("Unexpected selection!");
+            //System.out.println("Unexpected selection!");
             selected = 0;
         }else if(allEqual)
         {
@@ -472,7 +476,7 @@ public class SingleTreeNodeOL extends TreeNode {
 
         if (selected == -1)
         {
-            System.out.println("Unexpected selection!");
+            //System.out.println("Unexpected selection!");
             selected = 0;
         }
 

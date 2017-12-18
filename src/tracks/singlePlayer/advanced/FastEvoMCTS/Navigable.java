@@ -6,7 +6,7 @@ import tools.Vector2d;
 import java.util.ArrayList;
 
 /**
- * Created by diego on 05/09/14.
+ * This code is taken from https://github.com/diegopliebana/EvoMCTS/tree/master/src/FastEvoMCTS and modified. 
  */
 public interface Navigable
 {

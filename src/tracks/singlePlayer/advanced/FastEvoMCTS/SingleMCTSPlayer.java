@@ -7,10 +7,7 @@ import tools.Vector2d;
 import java.util.Random;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Diego
- * Date: 07/11/13
- * Time: 17:13
+* This code is taken from https://github.com/diegopliebana/EvoMCTS/tree/master/src/FastEvoMCTS and modified.
  */
 public class SingleMCTSPlayer
 {
@@ -32,6 +29,10 @@ public class SingleMCTSPlayer
 
     public static int[][] m_hitsMap;
 
+    ///// addition ////
+    public int[] favourable_acts;
+    ////////
+
     /**
      * Creates the MCTS player with a sampleRandom generator object.
      * @param a_rnd sampleRandom generator object.
@@ -44,7 +45,8 @@ public class SingleMCTSPlayer
 //        if(Config.USE_OPEN_LOOP)
 //            m_root = new SingleTreeNodeOL(a_rnd, roller, memory);
 //        else
-            m_root = new SingleTreeNode(a_rnd, roller, memory);
+	
+            m_root = new SingleTreeNode(a_rnd, roller, memory, favourable_acts);
 
         m_root.childIdx = -1;
         this.roller = roller;
@@ -55,9 +57,12 @@ public class SingleMCTSPlayer
      * @param a_gameState current state of the game.
      * @param features of the game state
      */
-    public void init(StateObservation a_gameState, FeatureExtraction features)
+    public void init(StateObservation a_gameState, FeatureExtraction features, int[] favourable_actions)
     {
         int nActions = a_gameState.getAvailableActions().size();
+	///// addition
+	favourable_acts = favourable_actions;
+	m_root.setfavourable_acts(favourable_acts);
 
         if(Config.USE_FORGET_ASTAR_CACHE && a_gameState.getGameTick() > 0 &&  a_gameState.getGameTick() % Config.FORGET_TIME == 0)
         {
@@ -102,7 +107,7 @@ public class SingleMCTSPlayer
         if(Config.USE_OPEN_LOOP)
             m_root = new SingleTreeNodeOL(m_rnd, roller, memory);
         else
-            m_root = new SingleTreeNode(m_rnd, roller, memory);
+            m_root = new SingleTreeNode(m_rnd, roller, memory,favourable_acts);
 
         m_root.state = a_gameState;
         m_root.childIdx = -1;
@@ -124,8 +129,8 @@ public class SingleMCTSPlayer
     public int run(ElapsedCpuTimer elapsedTimer)
     {
         //Do the search within the available time.
+	m_root.setfavourable_acts(favourable_acts);
         m_root.mctsSearch(elapsedTimer, roller, source);
-
         //Determine the best action to take and return it.
         int action = m_root.mostVisitedAction();
         //int action = m_root.bestAction();

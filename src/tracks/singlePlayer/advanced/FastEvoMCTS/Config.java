@@ -1,7 +1,7 @@
 package tracks.singlePlayer.advanced.FastEvoMCTS;
 
 /**
- * Created by diego on 22/09/14.
+ * This code is taken from https://github.com/diegopliebana/EvoMCTS/tree/master/src/FastEvoMCTS and modified. 
  */
 public class Config {
 
@@ -18,7 +18,7 @@ public class Config {
 
     //MCTS stuff
     public static boolean USE_PRUNE_CONT_UCT = false;
-    public static int ROLLOUT_DEPTH = 5;
+    public static int ROLLOUT_DEPTH = 10;
     public static double K = Math.sqrt(2);
     public static boolean USE_OPEN_LOOP = false;
 

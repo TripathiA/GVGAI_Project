@@ -4,11 +4,7 @@ import java.util.LinkedList;
 import java.util.TreeMap;
 
 /**
- * Created by IntelliJ IDEA.
- * User: diego
- * Date: 04/03/13
- * Time: 12:41
- * To change this template use File | Settings | File Templates.
+ * This code is taken from https://github.com/diegopliebana/EvoMCTS/tree/master/src/FastEvoMCTS and modified.
  */
 public class TranspositionTable         //Singleton
 {

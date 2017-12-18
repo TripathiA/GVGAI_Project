@@ -1,11 +1,11 @@
 package tracks.singlePlayer.advanced.FastEvoMCTS;
 
-import core.game.Event;
-import core.game.StateObservation;
-import ontology.Types;
-import tools.ElapsedCpuTimer;
-import tools.Utils;
-import tools.Vector2d;
+import server-out.core.game.Event;
+import server-out.core.game.StateObservation;
+import server-out.ontology.Types;
+import server-out.tools.ElapsedCpuTimer;
+import server-out.tools.Utils;
+import server-out.tools.Vector2d;
 
 import java.util.HashMap;
 import java.util.LinkedList;

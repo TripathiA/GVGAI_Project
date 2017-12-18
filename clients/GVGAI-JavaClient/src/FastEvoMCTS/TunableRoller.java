@@ -1,6 +1,6 @@
 package tracks.singlePlayer.advanced.FastEvoMCTS;
 
-import core.game.StateObservation;
+import server-out.core.game.StateObservation;
 
 import java.util.ArrayList;
 import java.util.HashMap;

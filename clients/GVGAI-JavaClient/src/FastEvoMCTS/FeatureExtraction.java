@@ -1,9 +1,9 @@
 package tracks.singlePlayer.advanced.FastEvoMCTS;
 
-import core.game.Observation;
-import core.game.StateObservation;
-import ontology.Types;
-import tools.Vector2d;
+import server-out.core.game.Observation;
+import server-out.core.game.StateObservation;
+import server-out.ontology.Types;
+import server-out.tools.Vector2d;
 //import Astar;
 //import Navigable;
 //import Node;

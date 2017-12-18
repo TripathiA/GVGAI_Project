@@ -1,7 +1,7 @@
 package tracks.singlePlayer.advanced.FastEvoMCTS;
 
-import core.game.StateObservation;
-import tools.ElapsedCpuTimer;
+import server-out.core.game.StateObservation;
+import server-out.tools.ElapsedCpuTimer;
 
 /**
  * Created by diego on 23/09/14.

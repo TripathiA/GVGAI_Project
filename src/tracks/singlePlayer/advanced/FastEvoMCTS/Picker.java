@@ -9,7 +9,7 @@ public class Picker<T> {
         picker.add(6.0, 2);
         picker.add(1.1, 3);
         picker.add(5.0, 0);
-        System.out.println(picker);
+        //System.out.println(picker);
     }
 
     T bestYet;

@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.TreeSet;
 
 /**
- * Created by diego on 24/03/14.
+ * This code is taken from https://github.com/diegopliebana/EvoMCTS/tree/master/src/FastEvoMCTS and modified. 
  */
 public class Memory
 {
@@ -351,13 +351,13 @@ public class Memory
             MemoryItem mem = entry.getValue();
             Integer key = entry.getKey();
 
-            System.out.println("Entry of type " + key + ", with timestamp " + mem.timestamp + ": ");
-            System.out.println("\t * makes me win at " + mem.getPercWins()*100.0 + "%, lose at "
-                    + mem.getPercLoses()*100.0 + "%.");
-            System.out.println("\t * is " + (mem.traversable ? "traversable" : "not traversable"));
-            System.out.println("\t * is been seen " + mem.getTotalOcc());
-            System.out.println("\t * produces an average score of " + mem.getCollScore() + " on collision.");
-            System.out.println("\t * produces an average score of " + mem.getActScore() + " with from-avatar sprites.");
+            //System.out.println("Entry of type " + key + ", with timestamp " + mem.timestamp + ": ");
+            //System.out.println("\t * makes me win at " + mem.getPercWins()*100.0 + "%, lose at "
+            //        + mem.getPercLoses()*100.0 + "%.");
+            //System.out.println("\t * is " + (mem.traversable ? "traversable" : "not traversable"));
+            //System.out.println("\t * is been seen " + mem.getTotalOcc());
+            //System.out.println("\t * produces an average score of " + mem.getCollScore() + " on collision.");
+            //System.out.println("\t * produces an average score of " + mem.getActScore() + " with from-avatar sprites.");
         }
     }
 

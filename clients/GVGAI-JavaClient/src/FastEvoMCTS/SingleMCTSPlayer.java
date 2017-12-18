@@ -1,8 +1,8 @@
 package tracks.singlePlayer.advanced.FastEvoMCTS;
 
-import core.game.StateObservation;
-import tools.ElapsedCpuTimer;
-import tools.Vector2d;
+import server-out.core.game.StateObservation;
+import server-out.tools.ElapsedCpuTimer;
+import server-out.tools.Vector2d;
 
 import java.util.Random;
 

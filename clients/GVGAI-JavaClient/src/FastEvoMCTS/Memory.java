@@ -1,9 +1,9 @@
 package tracks.singlePlayer.advanced.FastEvoMCTS;
 
-import core.game.Event;
-import core.game.StateObservation;
-import ontology.Types;
-import tools.StatSummary;
+import server-out.core.game.Event;
+import server-out.core.game.StateObservation;
+import server-out.ontology.Types;
+import server-out.tools.StatSummary;
 
 import java.util.HashMap;
 import java.util.Iterator;

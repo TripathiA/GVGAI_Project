@@ -2,13 +2,13 @@ package tracks.singlePlayer.advanced.FastEvoMCTS;
 
 //import Astar;
 //import Node;
-import core.game.Event;
-import core.game.Observation;
-import core.game.StateObservation;
-import core.player.AbstractPlayer;
-import ontology.Types;
-import tools.ElapsedCpuTimer;
-import tools.Vector2d;
+import server-out.core.game.Event;
+import server-out.core.game.Observation;
+import server-out.core.game.StateObservation;
+import server-out.core.player.AbstractPlayer;
+import server-out.ontology.Types;
+import server-out.tools.ElapsedCpuTimer;
+import server-out.tools.Vector2d;
 
 import java.awt.*;
 import java.util.ArrayList;

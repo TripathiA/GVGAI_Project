@@ -1,7 +1,7 @@
 package tracks.singlePlayer.advanced.FastEvoMCTS;
 
 /**
- * Created by diego on 27/03/14.
+ * This code is taken from https://github.com/diegopliebana/EvoMCTS/tree/master/src/FastEvoMCTS and modified. 
  */
 public class GainTest
 {
@@ -18,9 +18,9 @@ public class GainTest
             double post = i+1;
             double gain = testGain(pre, post);
 
-            System.out.println(pre + " => " + post + " : " + gain);
+            //System.out.println(pre + " => " + post + " : " + gain);
         }
-        System.out.println();
+        //System.out.println();
 
         for(int i = 0; i < 10; ++i)
         {
@@ -28,7 +28,7 @@ public class GainTest
             double post = i+2;
             double gain = testGain(pre, post);
 
-            System.out.println(pre + " => " + post + " : " + gain);
+            //System.out.println(pre + " => " + post + " : " + gain);
         }
 
 

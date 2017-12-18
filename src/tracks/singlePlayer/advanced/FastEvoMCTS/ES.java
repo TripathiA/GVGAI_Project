@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
- * Created by Diego on 20/03/14.
+ * This code is taken from https://github.com/diegopliebana/EvoMCTS/tree/master/src/FastEvoMCTS and modified. 
  * (1+1)-ES
  */
 public class ES extends FitVectorSource

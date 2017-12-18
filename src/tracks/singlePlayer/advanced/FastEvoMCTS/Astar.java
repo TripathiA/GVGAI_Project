@@ -1,13 +1,12 @@
 package tracks.singlePlayer.advanced.FastEvoMCTS;
 
-//import Config;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
 /**
- * Created by diego on 05/09/14.
+ * This code is taken from https://github.com/diegopliebana/EvoMCTS/tree/master/src/FastEvoMCTS and modified. 
  */
 public class Astar
 {
@@ -136,15 +135,15 @@ public class Astar
     {
         if(nodes == null)
         {
-            System.out.println("No Path");
+            //System.out.println("No Path");
             return;
         }
 
-        for(Node n : nodes)
-        {
-            System.out.print(n.position.x + ":" + n.position.y + ", ");
-        }
-        System.out.println();
+        //for(Node n : nodes)
+        //{
+        //    System.out.print(n.position.x + ":" + n.position.y + ", ");
+        //}
+        //System.out.println();
     }
 
 

@@ -13,6 +13,7 @@ import java.util.Random;
 
 
 /**
+* This code is taken from https://github.com/diegopliebana/EvoMCTS/tree/master/src/FastEvoMCTS and modified.
  * Node for MCTS. Includes:
  *  - Adaptive bounds for UCT, using the last [min,max] pair.
  *  - Transposition tables [Work in progress].
@@ -30,6 +31,10 @@ public class SingleTreeNode extends TreeNode
     private static final double HUGE_NEGATIVE = -10000000.0;
     private static final double HUGE_POSITIVE =  10000000.0;
     public static double epsilon = 1e-6;
+    ////// addition ////
+    public static double alpha = 0.2;
+    public int[] favourable_acts;
+    ////////////////////
     public SingleTreeNode parent;
     public SingleTreeNode[] children;
     public double totValue;
@@ -44,16 +49,17 @@ public class SingleTreeNode extends TreeNode
 
     private static double initialScore;
 
-    public SingleTreeNode(Random rnd, TunableRoller roller, Memory memory) {
-        this(null, null, rnd, roller, memory);
+    public SingleTreeNode(Random rnd, TunableRoller roller, Memory memory, int[] f_acts) {
+        this(null, null, rnd, roller, memory, f_acts);
     }
 
-    public SingleTreeNode(StateObservation state, SingleTreeNode parent, Random rnd, TunableRoller roller, Memory memory) {
+    public SingleTreeNode(StateObservation state, SingleTreeNode parent, Random rnd, TunableRoller roller, Memory memory, int[] f_acts) {
         this.memory = memory;
         this.state = state;
         this.parent = parent;
         this.m_rnd = rnd;
         this.roller = roller;
+	this.favourable_acts = f_acts;
         children = new SingleTreeNode[Agent.NUM_ACTIONS];
         totValue = 0.0;
         if(parent != null)
@@ -61,6 +67,15 @@ public class SingleTreeNode extends TreeNode
         else
             m_depth = 0;
     }
+
+
+    /////// addition /////
+
+    public void setfavourable_acts(int[] fav_acts)
+    {
+	this.favourable_acts = fav_acts;
+    }
+    //////////////////////
 
 
     public void mctsSearch(ElapsedCpuTimer elapsedTimer, TunableRoller roller, FitVectorSource source) {
@@ -190,7 +205,7 @@ public class SingleTreeNode extends TreeNode
         if(Config.USE_MEMORY)
             memory.addInformation(state.getEventsHistory().size(), state.getGameScore(), nextState, roller.getFeatures().getFeatureVector());
 
-        SingleTreeNode tn = new SingleTreeNode(nextState, this, this.m_rnd, this.roller, this.memory);
+        SingleTreeNode tn = new SingleTreeNode(nextState, this, this.m_rnd, this.roller, this.memory, this.favourable_acts);
         children[bestAction] = tn;
         tn.childIdx = bestAction;
 
@@ -201,6 +216,7 @@ public class SingleTreeNode extends TreeNode
 
         SingleTreeNode selected = null;
         double bestValue = -Double.MAX_VALUE;
+	int indx = 0;
         for (SingleTreeNode child : this.children)
         {
 
@@ -208,8 +224,21 @@ public class SingleTreeNode extends TreeNode
 
             double childValue =  hvVal / (child.nVisits + this.epsilon);
 
-            double uctValue = childValue +
-                    Config.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) +
+	    //// addition ////
+
+	    double probability = this.m_rnd.nextDouble();
+	    double neg_probability = 1 - probability;
+	    double factor = 0.99;
+	    if (probability < 0.4)
+	    {
+		factor =  0.01;
+	    }
+	    //else neg_probability *= 0.01;
+	    //////////////////
+
+
+            double uctValue = (childValue + probability*factor*favourable_acts[indx] ) +
+                    Config.K * ((neg_probability*(1-factor)) + Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon))) +
                     this.m_rnd.nextDouble() * this.epsilon;
 
             // small sampleRandom numbers: break ties in unexpanded nodes
@@ -217,6 +246,7 @@ public class SingleTreeNode extends TreeNode
                 selected = child;
                 bestValue = uctValue;
             }
+	    indx++;
         }
 
         if (selected == null)
@@ -447,7 +477,7 @@ public class SingleTreeNode extends TreeNode
                     allEqual = false;
                 }
 
-                if (children[i].nVisits + m_rnd.nextDouble() * epsilon > bestValue) {
+                if (children[i].nVisits + m_rnd.nextDouble() * epsilon + favourable_acts[i] * alpha > bestValue) {
                     bestValue = children[i].nVisits;
                     selected = i;
                 }
@@ -456,7 +486,7 @@ public class SingleTreeNode extends TreeNode
 
         if (selected == -1)
         {
-            System.out.println("Unexpected selection!");
+            //System.out.println("Unexpected selection!");
             selected = 0;
         }else if(allEqual)
         {
@@ -473,7 +503,7 @@ public class SingleTreeNode extends TreeNode
 
         for (int i=0; i<children.length; i++) {
 
-            if(children[i] != null && children[i].totValue + m_rnd.nextDouble() * epsilon > bestValue) {
+            if(children[i] != null && children[i].totValue + m_rnd.nextDouble() * epsilon + favourable_acts[i] * alpha > bestValue) {
                 bestValue = children[i].totValue;
                 selected = i;
             }
@@ -481,7 +511,7 @@ public class SingleTreeNode extends TreeNode
 
         if (selected == -1)
         {
-            System.out.println("Unexpected selection!");
+            //System.out.println("Unexpected selection!");
             selected = 0;
         }
 
